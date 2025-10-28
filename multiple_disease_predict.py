@@ -13,17 +13,20 @@ from streamlit_option_menu import option_menu
 # Load the saved models (using relative paths)
 # ----------------------------
 base_path = os.path.dirname(__file__)
-
 diabetes_model_path = os.path.join(base_path, "saved_models", "diabetes_model.sav")
-heart_model_path = os.path.join(base_path, "saved_models", "heart_model.sav")
+heart_model_path = os.path.join(base_path, "saved_models", "heart_disease_model.sav")
 parkinsons_model_path = os.path.join(base_path, "saved_models", "parkinsons_model.sav")
 
+# ------------------------------------------------
+# Load the saved models
+# ------------------------------------------------
 with open(diabetes_model_path, "rb") as f:
     diabetes_model = pickle.load(f)
 with open(heart_model_path, "rb") as f:
     heart_model = pickle.load(f)
 with open(parkinsons_model_path, "rb") as f:
     parkinsons_model = pickle.load(f)
+
 
 # ----------------------------
 # Sidebar navigation
@@ -127,3 +130,4 @@ elif selected == 'Parkinsons Prediction':
         parkinsons_diagnosis = '⚠️ The person has Parkinson’s disease' if parkinsons_prediction[0] == 1 else '✅ The person does not have Parkinson’s disease'
 
     st.success(parkinsons_diagnosis)
+
